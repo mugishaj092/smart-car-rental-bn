@@ -1,4 +1,7 @@
 package com.carrental.smartcar.exception;
 
-public class EmailAlreadyInUseException {
+public class EmailAlreadyInUseException extends RuntimeException {
+    public EmailAlreadyInUseException(String message) {
+        super(message);
+    }
 }

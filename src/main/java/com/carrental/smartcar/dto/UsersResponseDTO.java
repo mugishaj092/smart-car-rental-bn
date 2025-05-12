@@ -1,14 +1,15 @@
 package com.carrental.smartcar.dto;
 
 import com.carrental.smartcar.model.User;
+import java.util.List;
 
-public class UserResponseDTO {
+public class UsersResponseDTO {
     private String message;
-    private User user;
+    private List<User> users;
 
-    public UserResponseDTO(String message, User user) {
+    public UsersResponseDTO(String message, List<User> users) {
         this.message = message;
-        this.user = user;
+        this.users = users;
     }
 
     public String getMessage() {
@@ -19,11 +20,11 @@ public class UserResponseDTO {
         this.message = message;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
