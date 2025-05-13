@@ -20,8 +20,9 @@ public class Car {
     private String transmission;
     private boolean available;
     private String imageUrl;
+    private double amountPerDay;
 
-    public Car(String name, String model, int year, String fuelType, String transmission, boolean available, String imageUrl) {
+    public Car(String name, String model, int year, String fuelType, String transmission, boolean available, String imageUrl,double amountPerDay) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.model = model;
@@ -30,6 +31,7 @@ public class Car {
         this.transmission = transmission;
         this.available = available;
         this.imageUrl = imageUrl;
+        this.amountPerDay = amountPerDay;
     }
 
     public Car() {
@@ -37,6 +39,15 @@ public class Car {
     }
 
     // Getters and setters
+
+
+    public double getAmountPerDay() {
+        return amountPerDay;
+    }
+
+    public void setAmountPerDay(double amountPerDay) {
+        this.amountPerDay = amountPerDay;
+    }
 
     public UUID getId() {
         return id;

@@ -30,7 +30,7 @@ public class JwtProvider {
         return Jwts.builder()
                 .setSubject(subject)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 3600_000)) // 1 hour
+                .setExpiration(new Date(System.currentTimeMillis() + 3600_0000))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
