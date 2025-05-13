@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -53,4 +54,51 @@ public class CarService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload image");
         }
     }
+
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
+    }
+
+    public Car getCarById(UUID carId) {
+        return carRepository.findById(carId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+    }
+
+    public Car updateCar(UUID carId, Car updatedCarData) {
+        Car existingCar = carRepository.findById(carId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+
+        existingCar.setName(updatedCarData.getName());
+        existingCar.setModel(updatedCarData.getModel());
+        existingCar.setYear(updatedCarData.getYear());
+        existingCar.setFuelType(updatedCarData.getFuelType());
+        existingCar.setTransmission(updatedCarData.getTransmission());
+        existingCar.setAvailable(updatedCarData.isAvailable());
+
+        return carRepository.save(existingCar);
+    }
+
+    public void deleteCar(UUID carId) {
+        Car car = carRepository.findById(carId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+        carRepository.delete(car);
+    }
+
+    public Car setCarAvailability(UUID carId, boolean available) {
+        Car car = carRepository.findById(carId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+
+        car.setAvailable(available);
+        return carRepository.save(car);
+    }
+
+    public List<Car> getAvailableCars() {
+        return carRepository.findByAvailable(true);
+    }
+
+    public List<Car> getUnavailableCars() {
+        return carRepository.findByAvailable(false);
+    }
+
+
 }

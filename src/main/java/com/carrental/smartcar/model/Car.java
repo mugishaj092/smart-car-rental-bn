@@ -15,11 +15,11 @@ public class Car {
     private UUID id;
     private String name;
     private String model;
-    private int year;            // e.g., 2020
-    private String fuelType;     // e.g., Petrol, Diesel
+    private int year;
+    private String fuelType;
     private String transmission;
-    private boolean available;   // is it available for rental
-    private String imageUrl;     // Optional image
+    private boolean available;
+    private String imageUrl;
 
     public Car(String name, String model, int year, String fuelType, String transmission, boolean available, String imageUrl) {
         this.id = UUID.randomUUID();
