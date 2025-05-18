@@ -14,7 +14,8 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @GetMapping("/test")
