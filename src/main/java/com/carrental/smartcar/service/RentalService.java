@@ -37,6 +37,7 @@ public class RentalService {
         // Get the currently authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+        System.out.println("username: " + username);
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new Exception("User not found");
