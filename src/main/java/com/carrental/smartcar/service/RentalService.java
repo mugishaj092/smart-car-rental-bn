@@ -62,8 +62,8 @@ public class RentalService {
 
         // Request payment via IntouchPay
         Map<String, Object> response = IntouchPayRequest.requestPayment(
-                "testa",
-                "71c931d4966984a90cee2bcc2953ce432899122b0f16778e5f4845d5ea18f7e6",
+                "USERNAME",
+                "INTOUCHPAYMENTPASSWORD",
                 user.getPhoneNumber(),
                 totalAmount,
                 "https://your-callback-url.com/"
